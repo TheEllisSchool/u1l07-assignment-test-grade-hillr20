@@ -29,12 +29,12 @@ public class ArraysProject1 {
 			
 		}
 		*/
-		int sum = 0;
+		double sum = 0.0;
 		for (int index = 0; index < size; index++) {
 			sum += grade[index];
 		}	
 		//calculate average
-		double average = sum/grades.length;
+		double average = (sum/grades.length);
 		JOptionPane.showMessageDialog(null, "Average is: " + average);
 		//find the highest
 		double highest = grade[0];
@@ -50,7 +50,17 @@ public class ArraysProject1 {
 				lowest = grade[i];
 			}
 		}
+		//remove lowest 
+		lowest = 0;
+		int newSum = 0; 
+		for (int index = 0; index < size; index++) {
+			newSum += grade[index];
+		}
+		double average2 = newSum/((grades.length)-1);
+		JOptionPane.showMessageDialog(null, "The average when the lowest score is"
+				+" dropped is: " + average2);
 	}	
+	
 		
 }	
 
