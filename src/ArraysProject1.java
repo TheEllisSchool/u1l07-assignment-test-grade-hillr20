@@ -7,7 +7,7 @@ public class ArraysProject1 {
 	//}
 		// TODO Auto-generated method stub
 		//declare an array to hold all the months 
-		String [] grades = {}; 
+		//String [] grades = {}; 
 		//declare an array for days of rainfall each month
 		//int [] rainDays = new int [12];
 		//get input
@@ -18,7 +18,7 @@ public class ArraysProject1 {
 		int size = Integer.parseInt(input);
 		//int size = input;
 		double [] grade = new double[size];
-		for (int index = 0; index < grades.length; index++) {
+		for (int index = 0; index < grade.length; index++) {
 			input = JOptionPane.showInputDialog(null, "What was your grade?");
 			grade[index] = Integer.parseInt(input);
 		//double [] grade = new double[size];
@@ -34,29 +34,61 @@ public class ArraysProject1 {
 			sum += grade[index];
 		}	
 		//calculate average
-		double average = (sum/grades.length);
+		double average = (sum/grade.length);
 		JOptionPane.showMessageDialog(null, "Average is: " + average);
 		//find the highest
 		double highest = grade[0];
-		for (int i = 0; i < grades.length; i++) {
+		for (int i = 0; i < grade.length; i++) {
 			if (grade[i] > highest) {
 			highest = grade[i];
 			}
 		}
 		//determine highest and lowest score
 		double lowest = grade[0];
-		for (int i = 0; i < grades.length; i++) {
+		for (int i = 0; i < grade.length; i++) {
 			if (grade[i] < lowest) {
 				lowest = grade[i];
 			}
 		}
+		
+		
+		  int sorted = grade.length;
+		//find the highest number
+		while(sorted > 0) {
+			
+			double max = grade[0];
+			//keep track of where max is
+			int maxIndex = 0;
+			
+			for (int i =0; i < sorted; i++) {
+				if (grade[i] > max) {
+					max = grade[i];
+					maxIndex = i;
+				}
+			}
+			//JOptionPane.showMessageDialog(null, max);
+			
+			//move it to the end and swap
+			double hold = grade[sorted -1];
+			grade[sorted - 1] = max;
+			grade[maxIndex] = hold;
+			
+			//update sorted variable
+			sorted--;
+		}
+			
+			//print my array
+			for (int i = 0; i < grade.length; i++) {
+				JOptionPane.showMessageDialog(null, grade[i]);
+			}
+		 
 		//remove lowest 
-		lowest = 0;
-		int newSum = 0; 
-		for (int index = 0; index < size; index++) {
+		lowest = grade[0];
+		double newSum = 0; 
+		for (int index = 1; index < size; index++) {
 			newSum += grade[index];
 		}
-		double average2 = newSum/((grades.length)-1);
+		double average2 = newSum/((grade.length)-1);
 		JOptionPane.showMessageDialog(null, "The average when the lowest score is"
 				+" dropped is: " + average2);
 	}	
